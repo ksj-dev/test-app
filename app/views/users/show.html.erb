@@ -16,6 +16,13 @@
     
     <% @user.posts.each do |post| %>
       <div class="posts-index-item">
+        <% @animedb.each do |db| %>
+          <% if db.sora_id == post.sora_id then%>
+            <%= db.title %>
+            <% break %>
+          <% end %>
+        <% end %>
+
         <div class="post-left">
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
         </div>

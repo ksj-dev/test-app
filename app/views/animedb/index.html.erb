@@ -3,6 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>アニメDB</h1>
+
 <table>
   <thead>
     <tr>
@@ -29,7 +30,7 @@
     <% @animedbs.each do |animedb| %>
       <tr>
         <td><%= animedb.sora_id %></td>
-        <td><%= animedb.title %></td>
+        <td><%= link_to(animedb.title, "/animedb/#{animedb.sora_id}") %></td>
         <td><%= animedb.title_short1 %></td>
         <td><%= animedb.title_short2 %></td>
         <td><%= animedb.title_short3 %></td>

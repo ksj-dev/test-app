@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "animedb" => "animedb#index"
+  get "animedb/index" => "animedb#index"
+  get "animedb/:sora_id" => "animedb#show"
 
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   get "users/:id/likes" => "users#likes"
 
   get "posts/index" => "posts#index"
-  get "posts/new" => "posts#new"
+  get "posts/new/:sora_id" => "posts#new"
   get "posts/:id" => "posts#show"
   post "posts/create" => "posts#create"
   get "posts/:id/edit" => "posts#edit"

@@ -4,23 +4,26 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all.order(created_at: :desc)
+    @animedb = Animedb.all
   end
   
   def show
     @post = Post.find_by(id: params[:id])
     @user = @post.user
-    # 変数@likes_countを定義してください
     @likes_count = Like.where(post_id: @post.id).count
+    @animedb = Animedb.find_by(sora_id: @post.sora_id)
   end
   
   def new
     @post = Post.new
+    @animedb = Animedb.find_by(sora_id: params[:sora_id])
   end
   
   def create
     @post = Post.new(
       content: params[:content],
-      user_id: @current_user.id
+      user_id: @current_user.id,
+      sora_id: params[:sora_id]
     )
     if @post.save
       flash[:notice] = "投稿を作成しました"

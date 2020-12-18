@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: params[:id])
+    @animedb = Animedb.all
   end
   
   def new
