@@ -1,0 +1,2 @@
+class Animedb < ApplicationRecord
+end

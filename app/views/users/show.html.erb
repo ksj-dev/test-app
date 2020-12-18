@@ -8,9 +8,13 @@
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
     </div>
-    <!-- 以下の<% %>を使ってeach文を追加してください -->
+    
+    <ul class="user-tabs">
+      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+    
     <% @user.posts.each do |post| %>
-      <!-- 指定されたコードを貼り付けてください -->
       <div class="posts-index-item">
         <div class="post-left">
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
@@ -22,7 +26,6 @@
           <%= link_to(post.content, "/posts/#{post.id}") %>
         </div>
       </div>
-    <!-- 以下の<% %>を使ってeach文のendを追加してください -->
     <% end %>
   </div>
 </div>

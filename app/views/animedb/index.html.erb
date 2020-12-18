@@ -1,0 +1,52 @@
+<div class="main animebd-index">
+    
+<p id="notice"><%= notice %></p>
+
+<h1>アニメDB</h1>
+<table>
+  <thead>
+    <tr>
+      <th>DBID</th>
+      <th>タイトル</th>
+      <th>略称１</th>
+      <th>略称２</th>
+      <th>略称３</th>
+      <th>公式URL</th>
+      <th>Twitter アカウント</th>
+      <th>Twitter ハッシュタグ</th>
+      <th>Cours_ID</th>
+      <th>男/女・向</th>
+      <th>続編</th>
+      <th>聖地コード</th>
+      <th>聖地名</th>
+      <th>年</th>
+      <th>クール</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @animedbs.each do |animedb| %>
+      <tr>
+        <td><%= animedb.sora_id %></td>
+        <td><%= animedb.title %></td>
+        <td><%= animedb.title_short1 %></td>
+        <td><%= animedb.title_short2 %></td>
+        <td><%= animedb.title_short3 %></td>
+        <td><%= animedb.public_url %></td>
+        <td><%= animedb.twitter_account %></td>
+        <td><%= animedb.twitter_hash_tag %></td>
+        <td><%= animedb.cours_id %></td>
+        <td><%= animedb.sex %></td>
+        <td><%= animedb.sequel %></td>
+        <td><%= animedb.city_code %></td>
+        <td><%= animedb.city_name %></td>
+        <td><%= animedb.year %></td>
+        <td><%= animedb.cours %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>

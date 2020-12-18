@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sora_id: 1
+  title: MyString
+  title_short1: MyString
+  title_short2: MyString
+  title_short3: MyString
+  public_url: MyString
+  twitter_account: MyString
+  twitter_hash_tag: MyString
+  cours_id: 1
+  sex: 1
+  sequel: 1
+  city_code: 1
+  city_name: MyString
+  year: 1
+  cours: 1
+
+two:
+  sora_id: 1
+  title: MyString
+  title_short1: MyString
+  title_short2: MyString
+  title_short3: MyString
+  public_url: MyString
+  twitter_account: MyString
+  twitter_hash_tag: MyString
+  cours_id: 1
+  sex: 1
+  sequel: 1
+  city_code: 1
+  city_name: MyString
+  year: 1
+  cours: 1

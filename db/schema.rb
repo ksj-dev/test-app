@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201211173945) do
+ActiveRecord::Schema.define(version: 20201218043805) do
+
+  create_table "animedbs", force: :cascade do |t|
+    t.integer  "sora_id"
+    t.string   "title"
+    t.string   "title_short1"
+    t.string   "title_short2"
+    t.string   "title_short3"
+    t.string   "public_url"
+    t.string   "twitter_account"
+    t.string   "twitter_hash_tag"
+    t.integer  "cours_id"
+    t.integer  "sex"
+    t.integer  "sequel"
+    t.integer  "city_code"
+    t.string   "city_name"
+    t.integer  "year"
+    t.integer  "cours"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
