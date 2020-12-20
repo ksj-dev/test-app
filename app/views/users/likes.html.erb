@@ -13,6 +13,7 @@
     <ul class="user-tabs">
       <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
       <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+      <li><%= link_to("マイランキング", "/users/#{@user.id}/ranking") %></li>
     </ul>
     
     <!-- 変数@likesに対してeach文を用いてください -->
@@ -30,8 +31,25 @@
           </div>
           <%= link_to(post.content, "/posts/#{post.id}") %>
         </div>
+        <%= post.review_point %>
+        <% for i in 1..post.review_point do %>
+          ☆
+        <% end %>
+        <br>
+        <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+          <%= link_to("/likes/#{post.id}/destroy", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn-unlike"></span>
+          <% end %>
+        <% else %>
+          <%= link_to("/likes/#{post.id}/create", {method: "post"} ) do %>
+            <span class="fa fa-heart like-btn"></span>
+          <% end %>
+        <% end %>
+        <%= Like.where(post_id: post.id).count %>
+        <div class="post-time">
+          <%= post.created_at %>
+        </div>        
       </div>
-    <!-- each文のendを追加してください -->
     <% end %>
   </div>
 </div>

@@ -4,6 +4,46 @@
 
 <h1>アニメDB</h1>
 
+<h2>検索</h2>
+<% if @p[:year] %>
+  <% path = animedb_index_path + "/"+ @p[:year] %>
+<% else %>
+  <% path = animedb_index_path %>
+<% end %>
+
+<%= path %>
+<%= form_tag path, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<% if @animedbs.length == 0 then %>
+ <h1> 検索結果なし</h1>
+<% end %>
+<div>
+年代:
+<%= link_to("All", "/animedb/index") %> 
+<% for num in 2014..2021 do %>
+  <% if num == @p[:year].to_i %>
+    num
+  <% else %>
+    <%= link_to(num, "/animedb/index/#{num}") %> 
+  <% end %>
+<% end %>
+</div>
+<div>
+クール:
+<%= link_to("All", "/animedb/index") %> 
+<% for num in 1..4 do %>
+  <% if num == @p[:year].to_i %>
+    num
+  <% else %>
+    <%= link_to(num, "/animedb/index/#{num}") %> 
+    <%= link_to path(params[:id], source: :grid, color: :green, size: :m) %>
+  <% end %>
+<% end %>
+</div>
 <table>
   <thead>
     <tr>

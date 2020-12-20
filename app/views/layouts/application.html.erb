@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TweetApp</title>
+    <title>豆板醤</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,9 +14,10 @@
     <header>
       <div class="header-logo">
         <% if @current_user %>
-          <%= link_to("TweetApp", "/posts/index") %>
+          <%= link_to(image_tag("logoo.png"), "/posts/index") %>
+
         <% else %>
-          <%= link_to("TweetApp", "/") %>
+          <%= link_to(image_tag("logoo.png"), "/posts/index") %>
         <% end %>
       </div>
       <ul class="header-menus">
@@ -25,10 +26,10 @@
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
           </li>
           <li>
-            <%= link_to("投稿一覧", "/posts/index") %>
+            <%= link_to("アニメDB", "/animedb/index") %>
           </li>
           <li>
-            <%= link_to("アニメDB", "/animedb/index") %>
+            <%= link_to("投稿一覧", "/posts/index") %>
           </li>
           <li>
             <%= link_to("ユーザー一覧", "/users/index") %>
@@ -38,7 +39,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to("TweetAppとは", "/about") %>
+            <%= link_to("豆板醤とは", "/about") %>
           </li>
           <li>
             <%= link_to("新規登録", "/signup") %>

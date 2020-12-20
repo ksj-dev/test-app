@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   get "animedb/index" => "animedb#index"
+  get "animedb/index/:year" => "animedb#index"
   get "animedb/:sora_id" => "animedb#show"
 
   post "likes/:post_id/create" => "likes#create"
@@ -14,10 +16,12 @@ Rails.application.routes.draw do
   post "login" => "users#login"
   post "logout" => "users#logout"
   get "login" => "users#login_form"
-  # "users/:id/likes"に対応するルーティングを追加してください
   get "users/:id/likes" => "users#likes"
+  get "users/:id/ranking" => "users#ranking"
 
   get "posts/index" => "posts#index"
+  get "posts/ranking" => "posts#ranking"
+  get "posts/likes_ranking" => "posts#likes_ranking"
   get "posts/new/:sora_id" => "posts#new"
   get "posts/:id" => "posts#show"
   post "posts/create" => "posts#create"

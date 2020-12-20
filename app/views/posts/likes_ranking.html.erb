@@ -1,21 +1,12 @@
-<div class="main user-show">
+<div class="main posts-index">
   <div class="container">
-    <div class="user">
-      <img src="<%= "/user_images/#{@user.image_name}" %>">
-      <h2><%= @user.name %></h2>
-      <p><%= @user.email %></p>
-      <% if @user.id == @current_user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <% end %>
-    </div>
-    
     <ul class="user-tabs">
-      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
-      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
-      <li><%= link_to("マイランキング", "/users/#{@user.id}/ranking") %></li>
+      <li><%= link_to("新着投稿", "/posts/index") %></li>
+      <li class="active"><%= link_to("いいねランキング", "/posts/likes_ranking") %></li>
+      <li><%= link_to("人気アニメランキング", "/posts/ranking") %></li>
     </ul>
     
-    <% @user.posts.each do |post| %>
+    <% @arr.each do |post| %>
       <div class="posts-index-item">
         <% @animedb.each do |db| %>
           <% if db.sora_id == post.sora_id then%>
@@ -23,7 +14,6 @@
             <% break %>
           <% end %>
         <% end %>
-
         <div class="post-left">
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
         </div>
@@ -32,9 +22,8 @@
             <%= link_to(post.user.name, "/users/#{post.user.id}") %>
           </div>
           <%= link_to(post.content, "/posts/#{post.id}") %>
-
         </div>
-        <%= post.review_point %>
+        <%= post.review_point%>
         <% for i in 1..post.review_point do %>
           ☆
         <% end %>

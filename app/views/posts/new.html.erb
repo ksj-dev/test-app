@@ -13,7 +13,15 @@
           <% end %>
           
           <textarea name="content"><%= @post.content %></textarea>
+          <p> 評価<br>
+            <input type="radio" name="review_point" value="5"> ☆☆☆☆☆
+            <input type="radio" name="review_point" value="4"> ☆☆☆☆
+            <input type="radio" name="review_point" value="3"> ☆☆☆
+            <input type="radio" name="review_point" value="2"> ☆☆
+            <input type="radio" name="review_point" value="1"> ☆
+          </p>
           <input type="submit" value="投稿">
+          
         </div>
       </div>
     <% end %>

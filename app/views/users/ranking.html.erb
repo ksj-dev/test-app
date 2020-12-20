@@ -10,12 +10,12 @@
     </div>
     
     <ul class="user-tabs">
-      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
       <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
-      <li><%= link_to("マイランキング", "/users/#{@user.id}/ranking") %></li>
+      <li class="active"><%= link_to("マイランキング", "/users/#{@user.id}/ranking") %></li>
     </ul>
-    
-    <% @user.posts.each do |post| %>
+    <% p_posts = @user.posts.order(review_point: :desc) %>
+    <% p_posts.each do |post| %>
       <div class="posts-index-item">
         <% @animedb.each do |db| %>
           <% if db.sora_id == post.sora_id then%>

@@ -1,10 +1,15 @@
 <div class="main posts-index">
   <div class="container">
+        <ul class="user-tabs">
+      <li class="active"><%= link_to("新着投稿", "/posts/index") %></li>
+      <li><%= link_to("いいねランキング", "/posts/likes_ranking") %></li>
+      <li><%= link_to("人気アニメランキング", "/posts/ranking") %></li>
+    </ul>
     <% @posts.each do |post| %>
       <div class="posts-index-item">
         <% @animedb.each do |db| %>
           <% if db.sora_id == post.sora_id then%>
-            <%= db.title %>
+            <h1><%= link_to(db.title, "/animedb/#{db.sora_id}") %></h1>
             <% break %>
           <% end %>
         <% end %>
@@ -17,6 +22,24 @@
           </div>
           <%= link_to(post.content, "/posts/#{post.id}") %>
         </div>
+        <%=post.review_point%>
+        <% for i in 1..post.review_point do %>
+          ☆
+        <% end %>
+        <br>
+        <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+          <%= link_to("/likes/#{post.id}/destroy", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn-unlike"></span>
+          <% end %>
+        <% else %>
+          <%= link_to("/likes/#{post.id}/create", {method: "post"} ) do %>
+            <span class="fa fa-heart like-btn"></span>
+          <% end %>
+        <% end %>
+        <%= Like.where(post_id: post.id).count %>
+        <div class="post-time">
+          <%= post.created_at %>
+        </div>        
       </div>
     <% end %>
   </div>

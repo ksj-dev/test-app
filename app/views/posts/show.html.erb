@@ -6,11 +6,15 @@
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
       <p>
-        <%= @animedb.title %>
+        <h1><%= link_to(@animedb.title, "/animedb/#{@post.sora_id}") %></h1>
       </p>
       <p>
         <%= @post.content %>
       </p>
+        <% for i in 1..@post.review_point do %>
+          ☆
+        <% end %>
+          
       <div class="post-time">
         <%= @post.created_at %>
       </div>
